@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thông tin người dùng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f0f2f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    header {
+        background: url('https://pbs.twimg.com/media/BS1Lf_lIAAEG9H9?format=jpg&name=4096x4096') no-repeat center center/cover;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    header p {
+        font-size: 1.2em;
+        font-style: italic;
+    }
+
+    .banner {
+        height: 150px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+
+    main {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    main h2 {
+        font-size: 1.8em;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .radio-group,
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    button {
+        width: 100%;
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px;
+        font-size: 1.2em;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    footer {
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 20px;
+    }
+
+    footer p {
+        margin-top: 10px;
+    }
+
+    form {
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 1.5em;
+        }
+
+        main {
+            padding: 15px;
+        }
+
+        button {
+            font-size: 1em;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <h1><img src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/2021px-Man_Utd_FC_.svg.png" width="50px" height="50px"></h1>
+        <p>Glory Glory Man United!</p>
+        <div class="banner"></div>
+    </header>
+    <main>
+        <h2>Đăng ký thông tin người dùng</h2>
+        <form id="registrationForm">
+            <label for="fullname">Họ và tên:</label>
+            <input type="text" id="fullname" name="fullname" maxlength="50" >
+            <span class="error-message" id="fullnameError"></span>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" >
+            <span class="error-message" id="emailError"></span>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+            <span class="error-message" id="phoneError"></span>
+
+            <label>Giới tính:</label>
+            <div class="radio-group">
+                <label><input type="radio" id="male" name="gender" value="Nam" > Nam</label>
+                <label><input type="radio" id="female" name="gender" value="Nữ" > Nữ</label>
+            </div>
+            <span class="error-message" id="genderError"></span>
+
+            <label>Sở thích:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="hobbies" value="Thể thao"> Thể thao</label>
+                <label><input type="checkbox" name="hobbies" value="Phim ảnh"> Phim ảnh</label>
+                <label><input type="checkbox" name="hobbies" value="Đọc sách"> Đọc sách</label>
+                <label><input type="checkbox" name="hobbies" value="Âm nhạc"> Âm nhạc</label>
+                <label><input type="checkbox" name="hobbies" value="Khác"> Khác</label>
+            </div>
+            <span class="error-message" id="hobbiesError"></span>
+
+            <label for="bio">Giới thiệu bản thân:</label>
+            <textarea id="bio" name="bio"></textarea>
+            <span class="error-message" id="bioError"></span>
+
+            <button type="submit">Đăng ký</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Thông tin sinh viên: Tên, Email, Lớp</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+
+        event.preventDefault();
+        let isValid = true;
+
+        const errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach(error => error.style.display = "none");
+
+        const fullname = document.getElementById("fullname").value.trim();
+        if (fullname === "" || fullname.length > 50) {
+            document.getElementById("fullnameError").textContent = "Vui lòng nhập họ và tên (tối đa 50 ký tự)";
+            document.getElementById("fullnameError").style.display = "block";
+            isValid = false;
+        }
+
+        const email = document.getElementById("email").value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent = "Vui lòng nhập email đúng định dạng";
+            document.getElementById("emailError").style.display = "block";
+            isValid = false;
+        }
+
+        const phone = document.getElementById("phone").value.trim();
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+            document.getElementById("phoneError").textContent = "Vui lòng nhập số điện thoại gồm 10 chữ số";
+            document.getElementById("phoneError").style.display = "block";
+            isValid = false;
+        }
+
+        const genderMale = document.getElementById("male").checked;
+        const genderFemale = document.getElementById("female").checked;
+        if (!genderMale && !genderFemale) {
+            document.getElementById("genderError").textContent = "Vui lòng chọn giới tính";
+            document.getElementById("genderError").style.display = "block";
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Đăng ký thành công!");
+            this.submit();
+        }
+    });
+
+</script>
+
+</html>
